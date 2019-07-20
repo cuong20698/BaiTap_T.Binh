@@ -52,15 +52,14 @@
                     <asp:Button ID="btnGuiND" runat="server" Text="Gửi nội dung" OnClick="btnGuiND_Click" />
                 </td>
             </tr>
+            <tr>
+                <td colspan="2" style="background-color:white"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="background-color:blue">DANH SÁCH COMMENT</td>
+            </tr>
+            <span id="EntryComment" runat="server"></span>
         </table>
-        <table style="width: 37%; height: 189px; margin-top:25px;color:white; background:#04B404; font-weight:bold" align="center">
-            <tr>
-                <td colspan="2" style="background-color:blue;" align="center" class="auto-style4">DANH SÁCH COMMENT</td>
-            </tr>
-            <tr>
-                <span id="EntryComment" runat="server"></span>
-            </tr>
-            </table>
     </div>
     </form>
 </body>
