@@ -11,8 +11,8 @@
         .auto-style2 {
             width: 131px;
         }
-        .auto-style4 {
-            height: 30px;
+        .auto-style5 {
+            height: 31px;
         }
     </style>
 </head>

@@ -15,6 +15,7 @@ public partial class GuestBook : System.Web.UI.Page
     }
     protected void btnGuiND_Click(object sender, EventArgs e)
     {
+        DateTime date = DateTime.Now;
         string sfile = Server.MapPath(@"\") + "data.txt";
         using (StreamWriter writer = new StreamWriter(sfile, true))
         {
@@ -22,6 +23,7 @@ public partial class GuestBook : System.Web.UI.Page
             writer.WriteLine(txtHoTen.Text);
             writer.WriteLine(txtEmail.Text);
             writer.WriteLine(txtNoiDung.Text);
+            writer.WriteLine(date);
             writer.WriteLine("#END");
             writer.Close();
         }
@@ -30,6 +32,7 @@ public partial class GuestBook : System.Web.UI.Page
 
     private void ReadComment()
     {
+        
         string sfile = Server.MapPath(@"\") + "data.txt";
         using (StreamReader read = new StreamReader(sfile))
         {
