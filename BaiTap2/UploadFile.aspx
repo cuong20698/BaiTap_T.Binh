@@ -47,7 +47,7 @@
                 <asp:MultiView ID="MultiView1" runat="server">
                     <asp:View ID="ViewUpload" runat="server">
                         <asp:FileUpload class="text" ID="btnFile" runat="server" /><br />
-                        <asp:Button ID="btnUpload" runat="server" Text="Upload" />
+                        <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
                     </asp:View>
                     <asp:View ID="ViewXemUpload" runat="server">
                         <asp:TextBox class="text" ID="txtXemDS" runat="server" TextMode="MultiLine" Rows="5"></asp:TextBox>

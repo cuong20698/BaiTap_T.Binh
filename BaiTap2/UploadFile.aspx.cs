@@ -20,4 +20,12 @@ public partial class UploadFile : System.Web.UI.Page
     {
         MultiView1.ActiveViewIndex = 1;
     }
+    protected void btnUpload_Click(object sender, EventArgs e)
+    {
+        if (btnFile.HasFile)
+        {
+            string fileName = @"\FileUpload\" + btnFile.FileName;
+            btnFile.SaveAs(MapPath(fileName));
+        }
+    }
 }
