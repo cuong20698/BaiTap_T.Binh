@@ -1,0 +1,56 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MultiView Control - DOTNET GROUP</title>
+    <script runat="server">  
+    protected void Page_Load(object sender, System.EventArgs e) {  
+        if(!Page.IsPostBack){  
+            MultiView1.ActiveViewIndex = 0;  
+           }  
+    }  
+    void NextImage(object sender, System.EventArgs e)  
+    {  
+        MultiView1.ActiveViewIndex += 1;  
+    }  
+    protected void Page_PreRender(object sender, System.EventArgs e) {  
+        Label1.Text = "C?u R?ng Thành ph? Ðà N?ng: " + (MultiView1.ActiveViewIndex + 1).ToString() + " trong " + MultiView1.Views.Count.ToString();  
+    }  
+</script> 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Crimson"></asp:Label>
+        <br />
+        <br />
+        <asp:MultiView ID="MultiView1" runat="server">
+            <asp:View ID="View1" runat="server">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/1.jpg" Width="800px" />
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Next Image" OnClick="NextImage" />
+            </asp:View>
+            <asp:View ID="View2" runat="server">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/2.jpg" Width="800px" />
+                <br />
+                <asp:Button ID="Button2" runat="server" Text="Next Image" OnClick="NextImage" />
+            </asp:View>
+            <asp:View ID="View3" runat="server">
+                <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/3.jpg" Width="800px" />
+                <br />
+                <asp:Button ID="Button3" runat="server" Text="Next Image" OnClick="NextImage" />
+            </asp:View>
+            <asp:View ID="View4" runat="server">
+                <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/4.jpg" Width="800px" />
+                <br />
+                <asp:Button ID="Button4" runat="server" Text="Next Image" OnClick="NextImage" />
+            </asp:View>
+            <asp:View ID="View5" runat="server">
+                <asp:Image ID="Image5" runat="server" ImageUrl="~/Images/5.jpg" Width="800px" />
+            </asp:View>
+        </asp:MultiView>
+    </div>
+    </form>
+</body>
+</html>

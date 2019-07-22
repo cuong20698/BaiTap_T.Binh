@@ -19,15 +19,24 @@ public partial class UploadFile : System.Web.UI.Page
     }
     protected void LinkXemUpload_Click(object sender, EventArgs e)
     {
-        MultiView1.ActiveViewIndex = 1;
+        MultiView1.ActiveViewIndex = 1;     
     }
     protected void btnUpload_Click(object sender, EventArgs e)
     {
-        if (btnFile.HasFile && CheckFileType(btnFile.FileName))
+        
+        try
         {
-            string fileName = @"\FileUpload\" + btnFile.FileName;
-            btnFile.SaveAs(MapPath(fileName));
+            string sFolderPath = Server.MapPath(@"\FileUpload");
+            HttpPostedFile myFile = btnFile.PostedFile;
+            string sFileName = myFile.FileName;
+            myFile.SaveAs(string.Format(@"{0}\{1}", sFolderPath, sFileName));
+            txtXemDS.Text += sFileName + "\n";
         }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+        
     }
 
     private bool CheckFileType(string fileName)
@@ -43,6 +52,15 @@ public partial class UploadFile : System.Web.UI.Page
                 return true;
             default:
                 return false;
+        }
+    }
+
+    private void GetAllFile(string path)
+    {
+        string[] filePath = Directory.GetFiles(path);
+        foreach (string s in filePath)
+        {
+            txtXemDS.Text += s +"\n";
         }
     }
 }
