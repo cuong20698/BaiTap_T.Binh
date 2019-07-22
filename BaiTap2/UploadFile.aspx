@@ -24,7 +24,7 @@
             margin-right:auto;
             padding:0;
         }
-        #btnBrowes, .text{
+        .text{
             width:630px;
             background-color:#EEE;
             margin-top:20px;
@@ -46,8 +46,8 @@
             <div class="Multiview">
                 <asp:MultiView ID="MultiView1" runat="server">
                     <asp:View ID="ViewUpload" runat="server">
-                        <input id="btnBrowes" type="file" runat="server" /><br />
-                        <input id="btnUpload" type="submit" runat="server" value="Upload" style="margin:auto;"/>
+                        <asp:FileUpload class="text" ID="btnFile" runat="server" /><br />
+                        <asp:Button ID="btnUpload" runat="server" Text="Upload" />
                     </asp:View>
                     <asp:View ID="ViewXemUpload" runat="server">
                         <asp:TextBox class="text" ID="txtXemDS" runat="server" TextMode="MultiLine" Rows="5"></asp:TextBox>
