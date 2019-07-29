@@ -47,7 +47,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" onsubmit="return validateForm()">
         <div>
             <table>
                 <tr>
@@ -62,8 +62,7 @@
                         <asp:TextBox class="txt" ID="txtHoTen" runat="server" Width="242px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvHoTen" runat="server" ErrorMessage="Nhập họ &amp; tên" ForeColor="Red" ControlToValidate="txtHoTen"></asp:RequiredFieldValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell-left">Ngày tháng năm sinh:</td>
@@ -71,8 +70,7 @@
                         <asp:TextBox class="txt" ID="txtNgaySinh" runat="server" TextMode="Date"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:CompareValidator ID="cmvNgaySinh" runat="server" ControlToValidate="txtNgaySinh" ErrorMessage="Nhập ngày sinh" ForeColor="Red" Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell-left">Giới tính:</td>
@@ -103,8 +101,7 @@
                         <asp:TextBox class="txt" ID="txtDiaChi" runat="server" Width="409px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvDiaChi" runat="server" ErrorMessage="Nhập địa chỉ" ForeColor="Red" ControlToValidate="txtDiaChi"></asp:RequiredFieldValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell-left">Tỉnh/Thành phố:</td>
@@ -112,8 +109,7 @@
                         <asp:TextBox class="txt" ID="txtThanhPho" runat="server" Width="242px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvThanhPho" runat="server" ErrorMessage="Nhập tỉnh/thành phố" ForeColor="Red" ControlToValidate="txtThanhPho"></asp:RequiredFieldValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell-left">Số điện thoại:</td>
@@ -121,8 +117,7 @@
                         <asp:TextBox class="txt" ID="txtSDT" runat="server" Width="242px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RegularExpressionValidator ID="revSDT" runat="server" ControlToValidate="txtSDT" ErrorMessage="Số điện thoại không hợp lệ" ForeColor="Red" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell-left">Số điện thoại di động:</td>
@@ -130,8 +125,7 @@
                         <asp:TextBox class="txt" ID="txtSDTDiDong" runat="server" Width="242px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RegularExpressionValidator ID="revSDTDiDong" runat="server" ControlToValidate="txtSDTDiDong" ErrorMessage="Số điện thoại di động không hợp lệ" ForeColor="Red" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell-left">Email:</td>
@@ -139,8 +133,7 @@
                         <asp:TextBox class="txt" ID="txtEmail" runat="server" Width="329px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email không hợp lệ" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="tieude" colspan="3">Trình độ học vấn</td>
@@ -185,7 +178,7 @@
                 <tr>
                     <td class="cell-left">Số năm kinh nghiệm:</td>
                     <td>
-                        <asp:TextBox class="txt" ID="txtNamKinhNhiem" runat="server" Width="177px"></asp:TextBox>
+                        <asp:TextBox class="txt" ID="txtNamKinhNghiem" runat="server" Width="177px" TextMode="Number"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>
@@ -209,7 +202,7 @@
                 <tr>
                     <td class="cell-left">Mức lương thỏa thuận:</td>
                     <td>
-                        <asp:TextBox class="txt" ID="txtNamKinhNhiem0" runat="server" Width="177px"></asp:TextBox>
+                        <asp:TextBox class="txt" ID="txtLuong" runat="server" Width="177px" TextMode="Number"></asp:TextBox>
                         &nbsp;
                         <asp:Label ID="Label1" runat="server" Text="VNĐ" ForeColor="#077D1F"></asp:Label>
                     </td>
@@ -217,7 +210,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" align="center">
-                        <asp:Button ID="btnGuiHoSo" runat="server" Text="Gửi hồ sơ" Style="margin-right: 50px" />
+                        <asp:Button ID="btnGuiHoSo" runat="server" Text="Gửi hồ sơ" Style="margin-right: 50px" PostBackUrl="RegisteringComplete.aspx"/>
                         <asp:Button ID="btnXoaForm" runat="server" Text="Xóa form" OnClick="btnXoaForm_Click" />
                     </td>
                 </tr>
@@ -225,4 +218,65 @@
         </div>
     </form>
 </body>
+<script>
+    function validateForm() {
+        var hoTen = document.getElementById('txtHoTen').value;
+        var diaChi = document.getElementById('txtDiaChi').value;
+        var thanhpho = document.getElementById('txtThanhPho').value;
+        var sdt = document.getElementById('txtSDT').value;
+        var sdtdd = document.getElementById('txtSDTDiDong').value;
+        var email = document.getElementById('txtEmail').value;
+        var hocvan = document.getElementById('txtHocVan').value;
+        var ngoaingu = document.getElementById('txtNgoaiNgu').value;
+        var kynang = document.getElementById('txtKyNang').value;
+        var namkn = document.getElementById('txtNamKinhNghiem').value;
+        var kn = document.getElementById('txtKinhNghiem').value;
+        var mongmuon = document.getElementById('txtMongMuon').value;
+        var luong = document.getElementById('txtLuong').value;
+        if (hoTen == "") {
+            alert("Nhập họ & tên!");
+        }else if (diaChi == "") {
+            alert("Nhập địa chỉ!");
+        } else if (thanhpho == "") {
+            alert("Nhập thành phố!");
+        } else if (sdt == "") {
+            alert("Nhập số điện thoại!");
+        }
+        else if (sdtdd == "") {
+            alert("Nhập số điện thoại di động!");
+        }
+        else if (email == "") {
+            alert("Nhập địa chỉ email!");
+        }
+        else if (hocvan == "") {
+            alert("Nhập thông tin học vấn!");
+        }
+        else if (ngoaingu == "") {
+            alert("Nhập trình độ ngoại ngữ!");
+        }
+        else if (kynang == "") {
+            alert("Nhập trình độ kỹ năng!");
+        }
+        else if (namkn == "") {
+            alert("Nhập năm kinh nghiệm!");
+        }
+        else if (kn == "") {
+            alert("Nhập kinh nghiệm làm việc!");
+        }
+        else if (mongmuon == "") {
+            alert("Nhập mong muốn!");
+        }
+        else if (luong == "") {
+            alert("Nhập mức lương mong muốn!");
+        }
+        else
+        {
+            alert("Gửi thành công!");
+            return true;
+        }
+        return false;
+    }
+</script>
 </html>
+
+
