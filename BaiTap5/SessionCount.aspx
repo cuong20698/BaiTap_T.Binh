@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="XemTTMayChu.aspx.cs" Inherits="XemTTMayChu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SessionCount.aspx.cs" Inherits="SessionCount" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    
     </div>
     </form>
 </body>
